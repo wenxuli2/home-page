@@ -1,0 +1,47 @@
+h1 {
+  text-align: center;
+}
+body,
+div,
+ul,
+li input,
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-decoration: none;
+  list-style: none;
+  font-weight: 400;
+  font-size: 14px;
+  color: #666;
+  font-family: 'Microsoft Yahei', 'Heiti SC';
+}
+input,
+button {
+  outline-color: invert;
+  outline-style: none;
+  outline-width: 0px;
+  border: none;
+  border-style: none;
+  text-shadow: none;
+}
+button {
+  box-sizing: border-box;
+  border: 0;
+  border: 1px solid #ccc;
+}
+table,
+td,
+tr {
+  border: 1px soild #fff;
+  text-overflow: ellipsis;
+  border: 0;
+}
+td {
+  height: 49px;
+}
+a {
+  text-decoration: none;
+  text-overflow: ellipsis;
+  color: #333;
+}

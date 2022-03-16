@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/article_munu.css">
+    <script src="../js/jquery.min.js"></script>
+    <title>全部文章</title>
+    <!-- <script src="../js/clipboard.js"></script>
+    <script src="../js/jquery.min.js"></script> -->
+</head>
+
+<body>
+    <main class="main">
+        <div class="search_box">
+            <input type="text" class="search_input_text" autofocus>
+            <button class="search-input-button" id="btn">搜索</button>
+            <div class="suggest">
+                <ul id="search_result">
+
+                </ul>
+            </div>
+        </div>
+        <ul class="content-list">
+        </ul>
+    </main>
+</body>
+<script src="../js/ajax.js"></script>
+<script src="../js/article_munu.js"></script>
+<script>
+    window.onresize = function(){
+        if ($(window).width()<1000){
+            $('.content-list li:nth-child(2n+1)').css('margin-right','0px')
+            $('.content-list li:nth-child(n)').css('margin-bottom','20px')
+
+        } else {
+            $('.content-list li:nth-child(2n+1)').css('margin-right','20px')
+            $('.content-list li:nth-child(2n)').css('margin-bottom','20px')
+        }
+    }
+</script>
+</html>

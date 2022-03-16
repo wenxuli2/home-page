@@ -1,0 +1,42 @@
+<p><!--more--></p>
+<h3>基本命令</h3>
+
+<pre class="highlight"><code class="code">netstat
+    用来打印Linux中网络系统的状态信息，可让你得知整个Linux操作系统的网络情况。
+    netstat -ntlp
+        -n或--numeric：直接使用ip地址，而不通过域名服务器；
+        -t或--tcp：显示TCP传输协议的连线状况；
+        -l或--listening：显示监控中的服务器的Socket；
+        -p或--programs：显示正在使用Socket的程序识别码和程序名称；
+        参考：https://ywnz.com/linux/netstat/
+rm 
+    -f　　　　-force　　　　　　忽略不存在的文件，强制删除，无任何提示
+    -i　　　　--interactive　　　 进行交互式地删除
+    -r | -R　　--recursive　　　  递归式地删除列出的目录下的所有目录和文件
+    -v　　　   --verbose　　　　详细显示进行的步骤
+    -rf           -- 组合命令            强制删除文件夹及内容不提示。（最常用）
+
+
+systemctl start nginx.service
+systemctl stop nginx.service
+systemctl restart nginx.service</code></pre>
+
+
+<script>
+function initCopyCode(){
+const copyHtml=`<button class="btn-copy"data-clipboard-snippet="">copy</button>`;
+$(".highlight .code").before(copyHtml);
+var clipboard=new ClipboardJS('.btn-copy');
+new ClipboardJS('.btn-copy',{
+target:function(trigger){
+console.log(trigger)
+trigger.innerHTML=`ok`
+setTimeout(()=>{
+trigger.innerHTML=`copy`
+},1000);
+return trigger.nextElementSibling;
+}
+})
+}
+window.onload=initCopyCode();
+</script>

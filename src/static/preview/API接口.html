@@ -1,0 +1,36 @@
+<p><!--more--></p>
+<h3>免费API接口</h3>
+
+<pre class="highlight"><code class="code">[github-public-apis](https://github.com/public-apis/public-apis)
+[免费API接口](http://suggestion.baidu.com)
+[搜索引擎智能提示API接口地址](https://www.iaspnetcore.com/blog/blogpost/5a8efc68f5eba4276034179d)
+[各大搜索引擎下拉词API接口地址](https://www.jianshu.com/p/72a1ec75c0e6)
+
+
+</code></pre>
+<h3>常用下拉词API接口</h3>
+
+<pre class="highlight"><code class="code">1.百度,下拉词API接口
+http://suggestion.baidu.com/su?wd=关键词&amp;p=3&amp;cb=cb
+2.google
+http://suggestqueries.google.com/complete/search?client=youtube&amp;q=关键词&amp;jsonp=cb</code></pre>
+
+
+<script>
+function initCopyCode(){
+const copyHtml=`<button class="btn-copy"data-clipboard-snippet="">copy</button>`;
+$(".highlight .code").before(copyHtml);
+var clipboard=new ClipboardJS('.btn-copy');
+new ClipboardJS('.btn-copy',{
+target:function(trigger){
+console.log(trigger)
+trigger.innerHTML=`ok`
+setTimeout(()=>{
+trigger.innerHTML=`copy`
+},1000);
+return trigger.nextElementSibling;
+}
+})
+}
+window.onload=initCopyCode();
+</script>

@@ -1,0 +1,99 @@
+<p><!--more--></p>
+<h3>Hexo的基本使用</h3>
+
+<pre class="highlight"><code class="code">[官网](https://hexo.io/)
+[官网中文文档](https://hexo.io/zh-cn/docs/)
+[github-hexojs](https://github.com/hexojs/hexo)
+[Hexo-Next实用主题优化](https://blog.csdn.net/bsp_mpu6050/article/details/107886524)
+[hexo-theme-keep官方文档](https://keep-docs.xpoet.cn/usage-tutorial/quick-start.html#%E5%AE%89%E8%A3%85)
+
+
+
+</code></pre>
+<h3>安装</h3>
+
+<pre class="highlight"><code class="code">npm i hexo-cli -g
+hexo init H:/hexo/blog
+cd H:/hexo/blog
+npm i hexo-deployer-git
+npm i hexo
+code .
+hexo new "Hello"
+//生成、发布hexo generate、
+hexo server
+hexo clean
+hexo g d
+
+</code></pre>
+<h3>获取开源的 Hexo 主题</h3>
+
+<pre class="highlight"><code class="code">[githhub上最火的hexo-theme](https://github.com/search?q=hexo-theme)
+1.下载
+    //cd &lt;博客存放的目录&gt;
+    powershell
+    cd H:\hexo\blog
+    //排名第一,但是要一个个去配置麻烦
+    [找到一个19年的别人的配置文件](https://github.com/caozongpeng/hexo-theme-next/blob/master/_config.yml)
+
+    git clone https://github.com/iissnan/hexo-theme-next.git themes/next
+    git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia
+    icarus具有不兼容最新hexo6.0，以及排斥其他theme，有兴趣的同学请自行测试
+    //git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus
+    git pull //更新最新版
+
+2.更改主题 
+配置文件中_config.yml改 theme: yilia
+    theme: yilia
+    若使用 next 必须安装hexo-renderer-swig
+    补充：npm i hexo-renderer-swig
+
+3、在博客根目录（注意不是yilia根目录）执行以下命令：
+npm i hexo-generator-json-content --save
+在根目录_config.yml里添加配置：
+jsonContent:
+    meta: false
+    pages: false
+    posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true
+
+</code></pre>
+<h3>常见问题</h3>
+
+<pre class="highlight"><code class="code">1.hexo使用theme出现“ {% extends ‘_layout.swig‘ %} {% import ‘_macro/post.swig‘ as post_template %}“问题
+    原因是hexo在5.0之后把swig给删除了需要自己手动安装
+    npm i hexo-renderer-swig
+2.const { Component } = require('inferno'); const classname = require
+    主题插件冲突，建议新的项目使用</code></pre>
+
+
+<script>
+function initCopyCode(){
+const copyHtml=`<button class="btn-copy"data-clipboard-snippet="">copy</button>`;
+$(".highlight .code").before(copyHtml);
+var clipboard=new ClipboardJS('.btn-copy');
+new ClipboardJS('.btn-copy',{
+target:function(trigger){
+console.log(trigger)
+trigger.innerHTML=`ok`
+setTimeout(()=>{
+trigger.innerHTML=`copy`
+},1000);
+return trigger.nextElementSibling;
+}
+})
+}
+window.onload=initCopyCode();
+</script>

@@ -1,0 +1,54 @@
+<h3>命令行</h3>
+
+<pre class="highlight"><code class="code">新建文件
+$ new-item index.ts 
+mkdir
+cd
+</code></pre>
+<p><!--more--></p>
+<h3>快捷键</h3>
+
+<pre class="highlight"><code class="code">移动行：alt+up/down
+格式化代码 shift+alt+f
+</code></pre>
+<h3>自定快捷件：【文件】-【首选项】-【键盘快捷键】</h3>
+
+<pre class="highlight"><code class="code">小写字母=&gt;大写字母 : shift+alt+x
+大写字母=&gt;小写字母 : shift+alt+y
+首字母小写=&gt;大写 : shift+alt+u
+</code></pre>
+<h3>vscode 插件</h3>
+
+<pre class="highlight"><code class="code">px to rem
+右击-扩展设置-Px-to-rem: Px-per-rem
+Number of pixels per 1rem.
+    可以设置当前rem与px的比例值
+px to em
+右击-扩展设置-Px To Em: Root Font Size
+    可以设置当前em与px的比例值
+</code></pre>
+<h3>问题</h3>
+<h4>vscode不能在终端执行程序脚本</h4>
+
+<pre class="highlight"><code class="code">get-ExecutionPolicy，显示Restricted，表示状态是禁止的
+set-ExecutionPolicy RemoteSigned</code></pre>
+
+
+<script>
+function initCopyCode(){
+const copyHtml=`<button class="btn-copy"data-clipboard-snippet="">copy</button>`;
+$(".highlight .code").before(copyHtml);
+var clipboard=new ClipboardJS('.btn-copy');
+new ClipboardJS('.btn-copy',{
+target:function(trigger){
+console.log(trigger)
+trigger.innerHTML=`ok`
+setTimeout(()=>{
+trigger.innerHTML=`copy`
+},1000);
+return trigger.nextElementSibling;
+}
+})
+}
+window.onload=initCopyCode();
+</script>
