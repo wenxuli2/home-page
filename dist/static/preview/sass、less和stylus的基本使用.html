@@ -1,0 +1,31 @@
+<h3>stylus的基本使用</h3>
+
+<pre class="highlight"><code class="code">stylus中文版参考文档之综述
+https://www.zhangxinxu.com/jq/stylus/
+stylus -w  stylus/index.styl -o css/index.css
+stylus -w  index.styl -o index.css
+1.父级引用 &amp;
+2.top border -1px(#e4e4e4)
+3.&gt;
+4.clearFix()//清除浮动
+</code></pre>
+<!-- more -->
+
+<script>
+function initCopyCode(){
+const copyHtml=`<button class="btn-copy"data-clipboard-snippet="">copy</button>`;
+$(".highlight .code").before(copyHtml);
+var clipboard=new ClipboardJS('.btn-copy');
+new ClipboardJS('.btn-copy',{
+target:function(trigger){
+console.log(trigger)
+trigger.innerHTML=`ok`
+setTimeout(()=>{
+trigger.innerHTML=`copy`
+},1000);
+return trigger.nextElementSibling;
+}
+})
+}
+window.onload=initCopyCode();
+</script>

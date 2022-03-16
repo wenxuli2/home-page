@@ -1,0 +1,262 @@
+<h3>问题</h3>
+<h3>css搜索框与按钮有间隙</h3>
+
+<pre class="highlight"><code class="code">margin-right -5px
+
+</code></pre>
+<h3>css+div浮动怎么让它在窗口大小变化时不改变位置</h3>
+
+<pre class="highlight"><code class="code">:父元素写死宽度
+
+</code></pre>
+<h3>css 取消原来input的阴影边框效果</h3>
+
+<pre class="highlight"><code class="code">input 
+    outline-color invert
+    outline-style none
+    outline-width 0px
+    border none
+    border-style none
+    text-shadow none
+</code></pre>
+<!-- more -->
+
+<h3>buttin、text 、input 高度不一致</h3>
+
+<pre class="highlight"><code class="code">// button的高度包含边框的高度，而文本框text则不包含边框高度。
+button
+    box-sizing border-box
+    border 0
+    border: 1px solid #ccc
+
+</code></pre>
+<h3>input 与父元素底部不贴合</h3>
+
+<pre class="highlight"><code class="code">// vertical-align 属性设置元素的垂直对齐方式。
+vertical-align 0.7px
+
+</code></pre>
+<h3>input页面加载时，自动获得焦点</h3>
+
+<pre class="highlight"><code class="code">autofocus // 页面加载时，自动获得焦点
+
+
+</code></pre>
+<hr>
+<h2>知识点</h2>
+<h3>有继承性的属性</h3>
+
+<pre class="highlight"><code class="code">字体系列属性
+    font-family：字体系列
+    font-weight：字体的粗细
+    font-size：字体的大小
+    font-style：字体的风格
+文本系列属性
+    text-indent：文本缩进
+    text-align：文本水平对齐
+    line-height：行高
+    word-spacing：单词之间的间距
+    letter-spacing：中文或者字母之间的间距
+    text-transform：控制文本大小写（就是uppercase、lowercase、capitalize这三个）
+    color：文本颜色
+        a标签的color不能继承，要在
+            a
+                color red
+                &amp;:hover 
+                    color #fff
+
+元素可见性
+    visibility：控制元素显示隐藏
+列表布局属性
+    list-style：列表风格，包括list-style-type、list-style-image等
+光标属性
+    cursor：光标显示为何种形态
+</code></pre>
+<h3>行内元素、块级元素、空元素</h3>
+
+<pre class="highlight"><code class="code">行内元素有：a b span img input select strong；
+
+块级元素有：div、nav、aside、header、footer、section、article、address、p、 ul ol li dl dt dd h1 h2 h3 h4 h5 h6 p
+空元素
+    &lt;br&gt;、&lt;hr&gt;、&lt;img&gt;、&lt;input&gt;、&lt;link&gt;、&lt;meta&gt;&lt;area&gt;、&lt;base&gt;、&lt;col&gt;、&lt;colgroup&gt;、&lt;command&gt;、&lt;embed&gt;、&lt;keygen&gt;、&lt;param&gt;、&lt;source&gt;、&lt;track&gt;、&lt;wbr&gt;
+</code></pre>
+<h3>单行文本居中</h3>
+
+<pre class="highlight"><code class="code">line-height 设置跟父元素一样即可
+</code></pre>
+<p>将img中图片与文字垂直居中
+    方法一
+        .appcode
+            position absolute
+            text-align center
+            img /<em>  </em>/
+                width 90px
+                height 90px
+                display block
+                margin auto
+    方法二
+        display flex
+        justify-content center</p>
+<h3>两行三列</h3>
+
+<pre class="highlight"><code class="code">p
+    display flex
+    flex-wrap: wrap
+    s
+        flex 1 0 33.33%
+
+</code></pre>
+<h3>可以考虑用em来定位</h3>
+
+<pre class="highlight"><code class="code">position absolute
+left xxem
+</code></pre>
+<h3>隐藏元素的方法</h3>
+
+<pre class="highlight"><code class="code">display none 不渲染，不占位，不响应
+visibility hidden
+opacity  0
+</code></pre>
+<h3>隐藏标签里的文本</h3>
+
+<pre class="highlight"><code class="code">text-indent -9999em
+
+</code></pre>
+<h3>监听后代元素获得焦点</h3>
+
+<pre class="highlight"><code class="code">&amp;.active,&amp;:hover 
+:focus-within 是一个CSS 伪类 ，表示一个元素获得焦点，或该元素的后代元素获得焦点。换句话说，元素自身或者它的某个后代匹配 :focus 伪类。（shadow DOM 树 (en-US)中的后代也包括在内）
+
+
+
+</code></pre>
+<h3>垂直水平居中</h3>
+
+<pre class="highlight"><code class="code">方法一
+    1.父
+        position relative
+    2.子
+        position: absolute
+        left 50%
+        top 50%
+        ransform translate(-50%,-50%)
+方法二
+    前提：子父盒子都有宽高
+    1.父
+        position relative
+    2.子
+        position: absolute
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+方法三
+
+
+</code></pre>
+<h3>媒体查询</h3>
+
+<pre class="highlight"><code class="code">@media mediatype and|not|only (media fature) {
+    css-code
+}   
+@media 
+    mediatype 媒体类型
+    and|not|only 关键字
+    (media fature) 媒体特性必须要有小括号
+</code></pre>
+<h3>flex布局</h3>
+
+<pre class="highlight"><code class="code">flex
+    flex-direction
+        row
+        column
+        row-reverse
+        column-reverse
+    flex-wrap
+        nowrap
+        wrap
+        nowrap-reverse
+        wrap-reverse
+    flow-flow
+        flex-direction&amp;flex-warp的简写
+    justify-content
+        flex-start
+        flex-end
+        center
+        sapce-between
+        space-around
+    align-items
+        strech(默认)
+        flex-start
+        flex-end
+        center
+        baseline
+    align-content
+        定义了多根轴线（多行）的对齐方式
+        strech(默认)
+        flex-start
+        flex-end
+        center
+        sapce-between
+        space-around
+
+</code></pre>
+<h3>用css改变鼠标箭头</h3>
+
+<pre class="highlight"><code class="code">[用css改变鼠标箭头](http://www.zzsky.cn/build/content/23.htm)
+一、在&lt;body&gt;与&lt;/body&gt;之间加入如下代码（这里选择cursor（文本）作为对象，还可以自己改为其他的，如link等）：
+    &lt;span style="cursor:*"&gt;文本或其它页面元素&lt;/span&gt;
+二、把*换成15种效果的一种：
+    hand      手形
+    crosshair      十字型
+    text      文本光标
+    wait      等待效果
+    default      默认效果
+    help      问号
+    e-size      向右的箭头
+    ne-resize      向右上的箭头
+    nw-resize      向左上的箭头
+    w-resize      向左的箭头
+    sw-resize      左下的箭头
+    s-resize      向下的箭头
+    se-resize      向右下的箭头
+    auto      系统自动给出的效果
+
+</code></pre>
+<h3>CSS position定位</h3>
+
+<pre class="highlight"><code class="code">static
+relative
+fixed
+absoulte
+sticky
+
+</code></pre>
+<h3>伪类:和伪元素::的区别</h3>
+
+<pre class="highlight"><code class="code">伪类: 
+就是这个元素的一个状态 比如 :active :checked    :empty, 都是当这个元素的一个状态.
+伪元素:
+你需要创建一个新的元素才能完成的样式,也就是说,如果你不用伪元素,你需要信创建一个元素才能完成这样的效果;
+比如::after 和::before作用是在元素前后添加内容和样式, 对于伪元素 css提供了一个content属性 可以在css中对伪元素添加内容</code></pre>
+
+
+<script>
+function initCopyCode(){
+const copyHtml=`<button class="btn-copy"data-clipboard-snippet="">copy</button>`;
+$(".highlight .code").before(copyHtml);
+var clipboard=new ClipboardJS('.btn-copy');
+new ClipboardJS('.btn-copy',{
+target:function(trigger){
+console.log(trigger)
+trigger.innerHTML=`ok`
+setTimeout(()=>{
+trigger.innerHTML=`copy`
+},1000);
+return trigger.nextElementSibling;
+}
+})
+}
+window.onload=initCopyCode();
+</script>

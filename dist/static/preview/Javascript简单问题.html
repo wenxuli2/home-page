@@ -1,0 +1,435 @@
+<h3>JavaScript有几种数据类型？</h3>
+
+<pre class="highlight"><code class="code">number、string、boolean、undefined、null、symbol、bigint、object
+
+</code></pre>
+<h3>JavaScript最大安全数字与最小安全数字？</h3>
+
+<pre class="highlight"><code class="code">Number.MAX_SAFE_INTEGER、Number.MIN_SAFE_INTEGER
+</code></pre>
+<h3>深拷贝与浅拷贝的区别？</h3>
+
+<pre class="highlight"><code class="code">浅拷贝：只拷贝第一层，深层的依然是引用，改变深层会影响原对象
+深拷贝：每一层都拷贝了，改变数据不会影响原对象
+
+</code></pre>
+<h3>闭包是什么？</h3>
+
+<pre class="highlight"><code class="code">闭包是一个函数，是一个能让外部访问到函数内部的函数
+优点：使外部能访问内部，延长内部变量寿命
+缺点：滥用闭包造成内存泄漏
+
+</code></pre>
+<h3>原型链是什么呀？</h3>
+
+<pre class="highlight"><code class="code">原型链是一条引用的链，实例的隐式原型指向构造函数的显式原型，可以使用A instanceof B来判断B是否在A的原型链上。
+
+function Fn() {}// Fn为构造函数
+var f1 = new Fn();//f1 是Fn构造函数创建出来的对象
+console.log(Fn.prototype) // {}
+console.log(typeof Fn.prototype)// object
+console.log(Fn.prototype.constructor)//[Function: Fn]
+console.log(f1.__proto__)// {}
+
+// 所有Fn.prototype.__proto__===Object.prototype
+console.log(typeof Object.prototype) //object
+console.log(Object.prototype.__proto__) //null
+</code></pre>
+<p><a href="https://zhuanlan.zhihu.com/p/38189949">原型是什么？原型链是什么？</a>
+<!-- more --></p>
+<h3>什么是变量提升？函数提升？</h3>
+
+<pre class="highlight"><code class="code">在js中只有两种作用域，全局作用域和函数作用域，在ES6之前，js是没有块级作用域。
+JavaScript 代码的执行分为两个阶段。第一个阶段在当前词法环境中注册所有的变量和函数声明，简单说就是，解析，解析完成之后，第二个阶段的 JavaScript 执行就开始了！
+JS中创建函数有两种方式：函数声明式和函数字面量式。只有函数声明才存在函数提升。
+JavaScript 仅提升声明，而不提升初始化。如果你先使用的变量，再声明并初始化它，变量的值将是 undefined。
+1:所有的声明都会提升到作用域的最顶上去。
+2:同一个变量只会声明一次，其他的会被忽略掉。
+3:函数声明的优先级高于变量申明的优先级，并且函数声明和函数定义的部分一起被提升。
+</code></pre>
+<p><a href="https://blog.csdn.net/qq_33505829/article/details/86158287">什么是变量提升？什么是函数提升？</a></p>
+<h3>isNaN 与 Number.isNaN的区别？</h3>
+
+<pre class="highlight"><code class="code">// Number.isNaN不存在类型转换的行为。
+console.log(Number('测试')) // NaN
+console.log(isNaN('测试')) //true
+console.log(Number.isNaN('测试')) //false
+</code></pre>
+<h3>解决遍历对象时，把原型上的属性遍历出来了咋办？</h3>
+
+<pre class="highlight"><code class="code">hasOwnProperty() //方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）
+
+</code></pre>
+<h3>valueOf 与 toString？</h3>
+
+<pre class="highlight"><code class="code">toString：正常情况下、偏向于显示、对象、字符转换
+valueOf：比较偏向于计算、数字、运算操作符转换
+
+</code></pre>
+<h3>栈内存和堆内存的区别</h3>
+<table>
+<thead><tr>
+<th style="text-align:left">栈内存</th>
+<th style="text-align:left">堆内存</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">存储基础数据类型</td>
+<td style="text-align:left">存储引用类型</td>
+</tr>
+<tr>
+<td style="text-align:left">按值访问</td>
+<td style="text-align:left">按引用访问</td>
+</tr>
+<tr>
+<td style="text-align:left">存储的值大小固定</td>
+<td style="text-align:left">存储的值大小不定</td>
+</tr>
+<tr>
+<td style="text-align:left">由系统自动分配内存空间</td>
+<td style="text-align:left">由代码进行指定分配</td>
+</tr>
+<tr>
+<td style="text-align:left">空间小运行效率高</td>
+<td style="text-align:left">空间大、运行效率相对较低</td>
+</tr>
+<tr>
+<td style="text-align:left">先进后出、后进先出</td>
+<td style="text-align:left">无序存储，根据引用直接获取</td>
+</tr>
+</tbody>
+</table>
+<h3>引用数据类型</h3>
+
+<pre class="highlight"><code class="code">除了基本类型的就是引用类型了
+Object 类型。细分的话，有：Object、Array、Date、RegExp、Function
+检测
+
+
+
+</code></pre>
+<h3>JavaScript变量在内存中具体存储形式？</h3>
+
+<pre class="highlight"><code class="code">// 基本数据类型：存在栈内存里
+// 引用数据类型：指针存栈内存，指向堆内存中一块地址，内容存在堆内存中,
+// JavaScript不允许直接访问堆内存中的位置，因此操作对象时，实际操作对象的引用
+// 基本类型发生复制行为
+let a1 = 0; a2 = "this is string" // 栈内存
+let b = { x: 10 }; // 变量b存在于栈中，{ x: 10 }作为对象存在于堆中
+// 访问堆内存中的引用数据类型时,从栈中获取该对象的地址引用,再从堆内存中取得我们需要的数据.
+// 引用类型发生复制行为
+let a = { x: 10, y: 20 };
+let b2 = a;
+b2.x = 5;
+console.log(a.x); // 5
+// 引用类型的复制，同样为新的变量b2分配一个新的值，保存在栈内存中，不同的是，这个值仅仅是引用类型的一个地址指针
+// 他们两个指向同一个值，也就是地址指针相同，在堆内存中访问到的具体对象实际上是同一个
+// 因此改变b2.x时，a.x也发生了变化，这就是引用类型的特性
+
+</code></pre>
+<h3>讲一讲JavaScript的装箱和拆箱？</h3>
+
+<pre class="highlight"><code class="code">// 装箱：把基本数据类型转化为对应的引用数据类型的操作
+// 看以下代码，s1只是一个基本数据类型，他是怎么能调用indexOf的呢？
+const s1 = 'Sunshine_Lin'
+const index = s1.indexOf('_')
+console.log(index) // 8
+// 原来是JavaScript内部进行了装箱操作  
+var temp = new String('Sunshine_Lin') // 创建String类型的一个实例；
+const index2 = temp.indexOf('_') // 在实例上调用指定的方法；
+temp = null // 销毁这个实例；
+console.log(index2) // 8
+//拆箱：将引用数据类型转化为对应的基本数据类型的操作, 通过valueOf或者toString方法实现拆箱操作
+var objNum = new Number(123);  
+var objStr =new String("123");   
+console.log( typeof objNum ); //object
+console.log( typeof objStr ); //object 
+console.log( typeof objNum.valueOf() ); //number
+console.log( typeof objStr.valueOf() ); //string
+console.log( typeof objNum.toString() ); // string 
+console.log( typeof objStr.toString() ); // string
+</code></pre>
+<h3>null和undefined的异同点有哪些？</h3>
+
+<pre class="highlight"><code class="code">1.相同点
+    都是空类型
+    转布尔值都是false，都是假值
+    null == undefined 为 true
+2.不同点
+    typeof，前者为object，后者为undefined
+    null转数字为0，undefined转数字为NaN
+    null === undefined 为 false
+
+</code></pre>
+<h3>如何判断数据类型？</h3>
+
+<pre class="highlight"><code class="code">1.typeof：能判断string、number、undefined、boolean、function、object（null是object）
+2.Object.prototype.toString.call()：能判断大部分数据类型
+3.instanceOf 用来判断某个构造函数的 prototype 属性所指向的对象是否存在于另外一个要检测对象的原型链上
+
+</code></pre>
+<h3>为什么typeof null 是object？</h3>
+
+<pre class="highlight"><code class="code">不同数据类型底层都是用二进制来表示的，二进制前三位为000则会被判断为object，而null二进制全是0，所以被判断成object
+
+</code></pre>
+<h3>显示转化和隐式转换</h3>
+
+<pre class="highlight"><code class="code">显示的转换数据类型主要通过JS定义的数据转换方法。
+    转型函数有Boolean()、Number()、parseInt()、parseFloat()、toString()
+隐式的数据转换，在JS中有一些操作符或者语句也会进行数据转换。比如if语句将条件转换为布尔类型值。
+递增和递减操作符(++,--),逻辑非操作符(!) 与 比较操作符(&lt;,&gt;,=),判断语句(if，do-while，while)
+</code></pre>
+<h3>JavaScript的隐式转换规则？</h3>
+
+<pre class="highlight"><code class="code">转string类型：+（字符串连接符）
+转number类型：++/--(自增自减运算符) + - * / %(算术运算符) &gt; &lt; &gt;= &lt;= == != === !== (关系运算符)
+转boolean：!（逻辑非运算符)
+
+双等号左右两边的转换规则？
+null == undefined 为 true
+1.如果有一个操作数是布尔值，则在比较相等性之前先将其转换为数值——false转换为0，而true转换为1；
+2.如果一个操作数是字符串，另一个操作数是数值，在比较相等性之前先将字符串转换为数值
+3.如果一个操作数是对象，另一个操作数不是，则调用对象的toString()方法，用得到的基本类型值按照前面的规则进行比较
+
+== 与 === 的区别？
+==：比较过程会进行隐式转换
+===：值相同，类型相同才会为true
+
+undefined &gt;= undefined 为什么是 false ？
+隐式转换，变成NaN &gt;= NaN，NaN不等于自身也不大于自身
+
+null &gt;= null 为什么是 true？
+隐式转换，变成0 &gt;= 0，为true
+
+[] == ![] 为什么是 true ？
+第一步：转为[] == false
+第二步：转为[] == 0
+第三步：转为'' == 0
+第四步：转为0 == 0
+
+</code></pre>
+<h3>0.1 + 0.2 === 0.3，对吗？</h3>
+
+<pre class="highlight"><code class="code">存在精度丢失问题，由于有些小数无法用二进制表示，所以只能取近似值，
+console.log(0.1 + 0.2 === 0.3) // false
+console.log((0.1*10+0.2*10)/10 ===0.3) //true
+console.log(parseFloat((0.1+0.2).toFixed(10)) ===0.3) //true
+</code></pre>
+<h3>什么是匿名函数？</h3>
+
+<pre class="highlight"><code class="code">匿名函数，就是没有名字的函数，比如：
+(function(x, y){
+    alert(x + y);  
+})(2, 3)
+</code></pre>
+<h3>绑定点击事件有几种方式？</h3>
+
+<pre class="highlight"><code class="code">1.xxx.onclick = function (){}
+2.&lt;xxx onclick=""&gt;&lt;/xxx&gt;
+3.xxx.addEventListener('click', function(){}, false)
+// addEventListener的第三个参数是干嘛的？决定事件是捕获阶段执行还是冒泡阶段执行，true：捕获，false：默认，冒泡
+</code></pre>
+<h3>函数声明和函数表达式的区别？</h3>
+
+<pre class="highlight"><code class="code">// 函数声明：享受函数提升
+// 函数表达式：归类于变量声明，享受变量提升
+// 函数提升优先级 &gt; 变量提升优先级
+console.log(fun) // fun () {}
+// 函数表达式
+var fun = function(name) {}
+// 函数声明
+function fun () {}
+console.log(fun) // fun (name) {}
+</code></pre>
+<h3>JavaScript的事件流模型有哪些？</h3>
+
+<pre class="highlight"><code class="code">事件冒泡：由最具体的元素接收，并往上传播
+事件捕获：由最不具体的元素接收，并往下传播
+DOM事件流：事件捕获 -&gt; 目标阶段 -&gt; 事件冒泡
+</code></pre>
+<h3>Ajax、Axios、Fetch有啥区别？</h3>
+
+<pre class="highlight"><code class="code">Ajax：是对XMLHttpRequest(XHR)的封装
+Axios：是基于Promise对XHR对象的封装
+Fetch：是window的一个方法，基于Promise，与XHR无关，不兼容IE
+</code></pre>
+<h3>load、$(document).ready、DOMContentLoaded的区别？</h3>
+
+<pre class="highlight"><code class="code">$(document).ready、DOMContentLoaded：DOM树构建完毕，但还没有请求静态资源
+load：静态资源请求完毕
+### 如何阻止事件冒泡？
+function stopBubble(e) {
+if (e.stopPropagation) {
+    e.stopPropagation()
+} else {
+    window.event.cancelBubble = true;
+}
+}
+</code></pre>
+<h3>如何阻止事件默认行为？</h3>
+
+<pre class="highlight"><code class="code">function stopDefault(e) {
+if (e.preventDefault) {
+    e.preventDefault();
+} else {
+    window.event.returnValue = false;
+}
+}
+</code></pre>
+<h3>什么是事件委托？</h3>
+
+<pre class="highlight"><code class="code">当子元素都需要绑定相同事件时，可以将事件绑在父元素上，优点有：
+绑定在父元素，则只需绑定一次，节省性能
+后续新增的子元素也可以触发父元素绑定的事件
+</code></pre>
+<h3>如何实现数组去重？</h3>
+
+<pre class="highlight"><code class="code">let arr = [1, 2, 1,2,3]
+let newArr = []
+// // 1. for循环
+// // 2. for循环 + indexOf / includes
+// for (let i = 0, l = arr.length; i &lt; l; i++) {
+//   if (newArr.indexOf(arr[i]) === -1) {
+//     newArr.push(arr[i])
+//   }
+// }
+// // 3. forEach + includes / indexOf
+// arr.forEach(item =&gt; {
+//   if (!newArr.includes(item)) newArr.push(item)
+// })
+// 4. 基于对象处理
+let obj = {}
+for (let i = 0; i &lt; arr.length; i++) {
+let item = arr[i] // 如果对象中已经有该元素, 说明该元素是重复元素
+if (obj[item] !== undefined) { // 就把数组最后一位放在该位置, 相当于删掉了该元素
+    arr[i] = arr[arr.length - 1]     // 数组长度减1, 将最后一个元素去掉
+    arr.length-- // i减一, 保证下次循环从替换的元素开始
+    i--
+    // continue
+}
+obj[item] = item
+}
+// 5.Set
+// console.log([... new Set(arr)])
+// console.log(arr)
+
+</code></pre>
+<h3>Set与Array的区别是什么？</h3>
+<table>
+<thead><tr>
+<th></th>
+<th style="text-align:center">Set</th>
+<th style="text-align:center">Array</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>判断有无元素</td>
+<td style="text-align:center">has</td>
+<td style="text-align:center">index</td>
+</tr>
+<tr>
+<td>添加元素</td>
+<td style="text-align:center">add</td>
+<td style="text-align:center">push、unshift</td>
+</tr>
+<tr>
+<td>删除元素</td>
+<td style="text-align:center">delete</td>
+<td style="text-align:center">splice、pop、shift</td>
+</tr>
+<tr>
+<td>长度</td>
+<td style="text-align:center">size</td>
+<td style="text-align:center">lenght</td>
+</tr>
+<tr>
+<td>清空</td>
+<td style="text-align:center">clear</td>
+<td style="text-align:center">重新赋值[]</td>
+</tr>
+<tr>
+<td>转换</td>
+<td style="text-align:center">new Set(array)</td>
+<td style="text-align:center">keys、value</td>
+</tr>
+<tr>
+<td>遍历</td>
+<td style="text-align:center">forEach</td>
+<td style="text-align:center">无</td>
+</tr>
+<tr>
+<td>去重</td>
+<td style="text-align:center">有</td>
+<td style="text-align:center">无</td>
+</tr>
+</tbody>
+</table>
+<h3>Map与Object的区别是什么？</h3>
+<table>
+<thead><tr>
+<th></th>
+<th style="text-align:center">Map</th>
+<th style="text-align:center">Obj</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>设置属性</td>
+<td style="text-align:center">set</td>
+<td style="text-align:center">obj[key] = value</td>
+</tr>
+<tr>
+<td>获取属性值</td>
+<td style="text-align:center">get</td>
+<td style="text-align:center">obj[key]</td>
+</tr>
+<tr>
+<td>判断属性存在与否</td>
+<td style="text-align:center">has</td>
+<td style="text-align:center">obj[key]</td>
+</tr>
+<tr>
+<td>删除元素</td>
+<td style="text-align:center">delete</td>
+<td style="text-align:center">delete关键字</td>
+</tr>
+<tr>
+<td>清空</td>
+<td style="text-align:center">clear</td>
+<td style="text-align:center">重新赋值{}</td>
+</tr>
+<tr>
+<td>转数组键值对</td>
+<td style="text-align:center">entries</td>
+<td style="text-align:center">entries</td>
+</tr>
+<tr>
+<td>遍历</td>
+<td style="text-align:center">自带forEach</td>
+<td style="text-align:center">无</td>
+</tr>
+</tbody>
+</table>
+
+
+<script>
+function initCopyCode(){
+const copyHtml=`<button class="btn-copy"data-clipboard-snippet="">copy</button>`;
+$(".highlight .code").before(copyHtml);
+var clipboard=new ClipboardJS('.btn-copy');
+new ClipboardJS('.btn-copy',{
+target:function(trigger){
+console.log(trigger)
+trigger.innerHTML=`ok`
+setTimeout(()=>{
+trigger.innerHTML=`copy`
+},1000);
+return trigger.nextElementSibling;
+}
+})
+}
+window.onload=initCopyCode();
+</script>

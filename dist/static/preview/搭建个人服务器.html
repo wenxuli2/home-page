@@ -1,0 +1,75 @@
+<h3>概述:感觉hexo挺好玩的，但是我还是想要弄一个网站玩玩，记录一下搭建过程的血与泪。</h3>
+<h3>代表是云服务linux下的操作，PS: 代表是在本机powershell环境下的操作</h3>
+<p><!--more--></p>
+<h3>一.在云服务器上搭建git的服务器，具体见<a href="https://www.runoob.com/git/git-server.html">Git 服务器搭建</a></h3>
+<h3>二.下载安装ngnix，配置ngnix.conf</h3>
+<h3>三.新建项目，联系本机与服务器</h3>
+
+<pre class="highlight"><code class="code">// 以下#的内容都是在su git的用户下进行
+# git init --bare /home/git/home-page.git
+# chown git:git -R /home/www/home-page
+# cd /home/git/home-page.git/hooks/
+# vim post-receive
+# 配置post-receive
+    !/bin/sh
+    git --work-tree=/home/www/home-page --git-dir=/home/git/home-page.git checkout -f
+chmod +x /home/git/home-page.git/hooks/post-receive
+
+# vi /etc/nginx/nginx.conf
+改一下nginx.conf配置的root
+    root /home/www/home-site/src
+    systemctl start nginx.service
+
+PS: cd H:\
+    cd home-page
+    git clone git@180.76.152.38:/home/git/home-page.git
+    New-Item src/index.html
+    git add .
+    git push
+
+</code></pre>
+<h3>suggest</h3>
+
+<pre class="highlight"><code class="code">[搜索引擎智能提示API接口地址](https://www.iaspnetcore.com/blog/blogpost/5a8efc68f5eba4276034179d)
+[各大搜索引擎下拉词API接口地址](https://www.jianshu.com/p/72a1ec75c0e6)
+百度
+    https://www.baidu.com/su?&amp;wd=搜索词
+google
+    http://clients1.google.com/complete/search?hl=zh&amp;output=toolbar&amp;q=关键词
+    http://suggestqueries.google.com/complete/search?client=youtube&amp;q=关键词&amp;jsonp=window.google.ac.h
+
+    https://suggestqueries.google.com/complete/search?output=toolbar&amp;hl=zh&amp;q=word
+
+搜狗(sogou)
+    Api地址：http://w.sugg.sogou.com/sugg/ajaj_json.jsp?key=设计&amp;type=web
+
+
+</code></pre>
+<h3>那些年遭遇的坑</h3>
+<p>1.error: failed to push some refs to '180.76.152.38:/home/git/website.git'
+    git init --bare /home/git/home-page.git 一个新的裸库，但是最后push，死活push不上去
+    原因：请在su git，在git用户操作，不要再root用户下进行，又是linux该死的权限问题
+2.网站资源都发生变化，但是网页还是没有变
+    Chrome 浏览器，按 Ctrl + Shift + R ，进行硬刷新（hard-refresh），可清空当前网页的缓存，重新打开当前页面</p>
+<h3>参考</h3>
+<p><a href="https://www.jianshu.com/p/9bebc4c93a64">JS获取transform rotate旋转角度的度数，matrix解析</a></p>
+
+
+<script>
+function initCopyCode(){
+const copyHtml=`<button class="btn-copy"data-clipboard-snippet="">copy</button>`;
+$(".highlight .code").before(copyHtml);
+var clipboard=new ClipboardJS('.btn-copy');
+new ClipboardJS('.btn-copy',{
+target:function(trigger){
+console.log(trigger)
+trigger.innerHTML=`ok`
+setTimeout(()=>{
+trigger.innerHTML=`copy`
+},1000);
+return trigger.nextElementSibling;
+}
+})
+}
+window.onload=initCopyCode();
+</script>

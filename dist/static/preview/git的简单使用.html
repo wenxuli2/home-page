@@ -1,0 +1,33 @@
+<p>学git看这两个网站足够了，一下绝大部分内容都是从这里抄的，记录一下，防止自己忘记
+<a href="https://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">阮一峰的网络日志</a>
+<a href="https://www.liaoxuefeng.com/wiki/896043488029600">廖雪峰的官方网站</a>
+&lt;！-- more --&gt;</p>
+<h3>常用git命令</h3>
+
+<pre class="highlight"><code class="code">//慎用
+git push --force origin master
+    --force选项，结果导致远程主机上更新的版本被覆盖。除非你很确定要这样做，否则应该尽量避免使用--force选项。
+git push origin --delete home-page.git (fetch)
+git remote -v
+    查看远程主机的网址
+git branch -r -D origin/master</code></pre>
+
+
+<script>
+function initCopyCode(){
+const copyHtml=`<button class="btn-copy"data-clipboard-snippet="">copy</button>`;
+$(".highlight .code").before(copyHtml);
+var clipboard=new ClipboardJS('.btn-copy');
+new ClipboardJS('.btn-copy',{
+target:function(trigger){
+console.log(trigger)
+trigger.innerHTML=`ok`
+setTimeout(()=>{
+trigger.innerHTML=`copy`
+},1000);
+return trigger.nextElementSibling;
+}
+})
+}
+window.onload=initCopyCode();
+</script>

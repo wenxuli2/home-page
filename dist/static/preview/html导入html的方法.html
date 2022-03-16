@@ -1,0 +1,39 @@
+<h3>1、$.load引入</h3>
+
+<pre class="highlight"><code class="code">$(document).ready(function () {
+    $('.main').load('md的使用.html')
+</code></pre>
+<p><!-- more --></p>
+<h3>2、iframe</h3>
+
+<pre class="highlight"><code class="code">&lt;!-- 1.导入 --&gt;
+&lt;iframe src="md的使用.html" frameborder="0" class="iframe"&gt;&lt;/iframe&gt;
+&lt;!-- 2.css实现宽高100% --&gt;
+.iframe
+    display block
+    width 100vw
+    height 100vh
+.object
+    display block
+    width 100vw
+    height 100vh</code></pre>
+
+
+<script>
+function initCopyCode(){
+const copyHtml=`<button class="btn-copy"data-clipboard-snippet="">copy</button>`;
+$(".highlight .code").before(copyHtml);
+var clipboard=new ClipboardJS('.btn-copy');
+new ClipboardJS('.btn-copy',{
+target:function(trigger){
+console.log(trigger)
+trigger.innerHTML=`ok`
+setTimeout(()=>{
+trigger.innerHTML=`copy`
+},1000);
+return trigger.nextElementSibling;
+}
+})
+}
+window.onload=initCopyCode();
+</script>

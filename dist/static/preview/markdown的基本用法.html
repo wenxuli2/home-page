@@ -1,0 +1,108 @@
+<h3>markdown的基本用法</h3>
+<h4>标题</h4>
+
+<pre class="highlight"><code class="code">多少个#就是几集标题,1-6级
+
+</code></pre>
+<h4>引用</h4>
+<blockquote><p>大于号"&gt;"</p>
+<h1>my-swiper</h1>
+</blockquote>
+<h4>字体</h4>
+
+<pre class="highlight"><code class="code">两边加 " * " 或者" _"
+
+</code></pre>
+<!--more-->
+
+<p><em>斜体两边加 " </em> "<em>
+<strong>粗体两边加 " </strong> "<strong></strong></em>斜粗体两边加 " <strong> "*</strong></p>
+<hr>
+<h4>分割线</h4>
+<h2>三个以上的星号（*）、减号（-）、下划线（_）</h2>
+<hr>
+
+<pre class="highlight"><code class="code">[百度](url)</code></pre>
+<h4>删除线</h4>
+<p><del>两边加2个波浪线</del>~~
+<u> 下划线"u标签"</u></p>
+<h4>快捷键</h4>
+
+<pre class="highlight"><code class="code">
+ctrl+k
+ctrl+j
+ctrl+k ctrl+1</code></pre>
+<h4>超链接</h4>
+<p><a href="http://www.baidu.com">百度</a></p>
+
+<pre class="highlight"><code class="code">[百度](http://www.baidu.com)</code></pre>
+<h4>图片</h4>
+
+<pre class="highlight"><code class="code"> ![文字](url)</code></pre>
+<p><img src="https://www.baidu.com/img/pc_9c5c85e6b953f1d172e1ed6821618b91.png" alt="图片">
+<img src="i.jpg" alt="图片"></p>
+<h4>表格的简单使用</h4>
+<table>
+<thead><tr>
+<th>水果</th>
+<th style="text-align:center">价格</th>
+<th style="text-align:center">数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>香蕉</td>
+<td style="text-align:center">$1</td>
+<td style="text-align:center">00000000000000000000000005</td>
+</tr>
+<tr>
+<td>苹果</td>
+<td style="text-align:center">$1</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td>草莓</td>
+<td style="text-align:center">$1</td>
+<td style="text-align:center">7</td>
+</tr>
+</tbody>
+</table>
+<table border="1px" align="center" bordercolor="black" width="80%" height="100px">
+    <tr align="center">
+        <td>字段</td>
+        <td>类型</td>
+        <td>是否必选</td>
+        <td>可为空</td>
+        <td>默认值</td>
+        <td>说明</td>
+        <td>示例</td>
+    </tr>
+    <tr align="center">
+        <td>account</td>
+        <td>string</td>
+        <td>Y</td>
+        <td>N</td>
+        <td></td>
+        <td>账号</td>
+        <td>zhangli@test.com</td>
+    </tr>
+</table>
+
+<script>
+function initCopyCode(){
+const copyHtml=`<button class="btn-copy"data-clipboard-snippet="">copy</button>`;
+$(".highlight .code").before(copyHtml);
+var clipboard=new ClipboardJS('.btn-copy');
+new ClipboardJS('.btn-copy',{
+target:function(trigger){
+console.log(trigger)
+trigger.innerHTML=`ok`
+setTimeout(()=>{
+trigger.innerHTML=`copy`
+},1000);
+return trigger.nextElementSibling;
+}
+})
+}
+window.onload=initCopyCode();
+</script>
